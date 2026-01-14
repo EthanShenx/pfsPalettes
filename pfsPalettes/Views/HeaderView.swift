@@ -84,6 +84,8 @@ struct HeaderView: View {
                 .disabled((store.selectedPalette?.colors.count ?? 0) < 3)
             } label: {
                 Image(systemName: "ellipsis.circle")
+                    .font(.system(size: 10))
+                    .foregroundColor(.secondary)
             }
             .menuStyle(.borderlessButton)
 
