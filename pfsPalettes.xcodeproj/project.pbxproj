@@ -1,0 +1,420 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B1B1B1B1B1B1B1B1B1B1B101 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A1A1A1A1A1A1A1A1A1A1A1 /* AppDelegate.swift */; };
+		B1B1B1B1B1B1B1B1B1B1B102 /* PaletteFloaterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A1A1A1A1A1A1A1A1A1A1A2 /* PaletteFloaterApp.swift */; };
+		B1B1B1B1B1B1B1B1B1B1B103 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A1A1A1A1A1A1A1A1A1A1A3 /* ContentView.swift */; };
+		B1B1B1B1B1B1B1B1B1B1B104 /* PaletteCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A1A1A1A1A1A1A1A1A1A1A4 /* PaletteCommands.swift */; };
+		B1B1B1B1B1B1B1B1B1B1B105 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A1A1A1A1A1A1A1A1A1A1A5 /* Palette.swift */; };
+		B1B1B1B1B1B1B1B1B1B1B106 /* PaletteColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A1A1A1A1A1A1A1A1A1A1A6 /* PaletteColor.swift */; };
+		B1B1B1B1B1B1B1B1B1B1B107 /* PalettesPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A1A1A1A1A1A1A1A1A1A1A7 /* PalettesPayload.swift */; };
+		B1B1B1B1B1B1B1B1B1B1B108 /* PaletteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A1A1A1A1A1A1A1A1A1A1A8 /* PaletteStore.swift */; };
+		B1B1B1B1B1B1B1B1B1B1B109 /* PalettesDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A1A1A1A1A1A1A1A1A1A1A9 /* PalettesDocument.swift */; };
+		B1B1B1B1B1B1B1B1B1B1B10A /* ColorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A1A1A1A1A1A1A1A1A1A1AA /* ColorUtils.swift */; };
+		B1B1B1B1B1B1B1B1B1B1B10B /* WindowAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A1A1A1A1A1A1A1A1A1A1AB /* WindowAccessor.swift */; };
+		B1B1B1B1B1B1B1B1B1B1B10C /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A1A1A1A1A1A1A1A1A1A1AC /* VisualEffectView.swift */; };
+		B1B1B1B1B1B1B1B1B1B1B10D /* WindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A1A1A1A1A1A1A1A1A1A1AD /* WindowManager.swift */; };
+		B1B1B1B1B1B1B1B1B1B1B10E /* PaletteBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A1A1A1A1A1A1A1A1A1A1AE /* PaletteBackgroundView.swift */; };
+		B1B1B1B1B1B1B1B1B1B1B10F /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A1A1A1A1A1A1A1A1A1A1AF /* HeaderView.swift */; };
+		B1B1B1B1B1B1B1B1B1B1B110 /* PaletteRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A1A1A1A1A1A1A1A1A1A1B0 /* PaletteRowView.swift */; };
+		B1B1B1B1B1B1B1B1B1B1B111 /* SwatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A1A1A1A1A1A1A1A1A1A1B1 /* SwatchView.swift */; };
+		B1B1B1B1B1B1B1B1B1B1B112 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A1A1A1A1A1A1A1A1A1A1B2 /* EmptyStateView.swift */; };
+		B1B1B1B1B1B1B1B1B1B1B113 /* AddColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A1A1A1A1A1A1A1A1A1A1B3 /* AddColorView.swift */; };
+		B1B1B1B1B1B1B1B1B1B1B114 /* EditColorSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A1A1A1A1A1A1A1A1A1A1B4 /* EditColorSheet.swift */; };
+		B1B1B1B1B1B1B1B1B1B1B115 /* NewPaletteSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A1A1A1A1A1A1A1A1A1A1B5 /* NewPaletteSheet.swift */; };
+		B1B1B1B1B1B1B1B1B1B1B116 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1A1A1A1A1A1A1A1A1A1A1B6 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A1A1A1A1A1A1A1A1A1A1A1A1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A1A1A1A1A1A1A1A1A1A1A1A2 /* PaletteFloaterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteFloaterApp.swift; sourceTree = "<group>"; };
+		A1A1A1A1A1A1A1A1A1A1A1A3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A1A1A1A1A1A1A1A1A1A1A1A4 /* PaletteCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteCommands.swift; sourceTree = "<group>"; };
+		A1A1A1A1A1A1A1A1A1A1A1A5 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
+		A1A1A1A1A1A1A1A1A1A1A1A6 /* PaletteColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteColor.swift; sourceTree = "<group>"; };
+		A1A1A1A1A1A1A1A1A1A1A1A7 /* PalettesPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalettesPayload.swift; sourceTree = "<group>"; };
+		A1A1A1A1A1A1A1A1A1A1A1A8 /* PaletteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteStore.swift; sourceTree = "<group>"; };
+		A1A1A1A1A1A1A1A1A1A1A1A9 /* PalettesDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalettesDocument.swift; sourceTree = "<group>"; };
+		A1A1A1A1A1A1A1A1A1A1A1AA /* ColorUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorUtils.swift; sourceTree = "<group>"; };
+		A1A1A1A1A1A1A1A1A1A1A1AB /* WindowAccessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowAccessor.swift; sourceTree = "<group>"; };
+		A1A1A1A1A1A1A1A1A1A1A1AC /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
+		A1A1A1A1A1A1A1A1A1A1A1AD /* WindowManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowManager.swift; sourceTree = "<group>"; };
+		A1A1A1A1A1A1A1A1A1A1A1AE /* PaletteBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteBackgroundView.swift; sourceTree = "<group>"; };
+		A1A1A1A1A1A1A1A1A1A1A1AF /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		A1A1A1A1A1A1A1A1A1A1A1B0 /* PaletteRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteRowView.swift; sourceTree = "<group>"; };
+		A1A1A1A1A1A1A1A1A1A1A1B1 /* SwatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwatchView.swift; sourceTree = "<group>"; };
+		A1A1A1A1A1A1A1A1A1A1A1B2 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		A1A1A1A1A1A1A1A1A1A1A1B3 /* AddColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddColorView.swift; sourceTree = "<group>"; };
+		A1A1A1A1A1A1A1A1A1A1A1B4 /* EditColorSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditColorSheet.swift; sourceTree = "<group>"; };
+		A1A1A1A1A1A1A1A1A1A1A1B5 /* NewPaletteSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPaletteSheet.swift; sourceTree = "<group>"; };
+		A1A1A1A1A1A1A1A1A1A1A1B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A1A1A1A1A1A1A1A1A1A1A1B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A1A1A1A1A1A1A1A1A1A1A1B8 /* pfsPalettes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; path = pfsPalettes.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C1C1C1C1C1C1C1C1C1C1C1C1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1D1D1D1D1D1D1D1D1D1D1D1D = {
+			isa = PBXGroup;
+			children = (
+				1E1E1E1E1E1E1E1E1E1E1E1E,
+				2D2D2D2D2D2D2D2D2D2D2D2D,
+				2E2E2E2E2E2E2E2E2E2E2E2E,
+			);
+			sourceTree = "<group>";
+		};
+		1E1E1E1E1E1E1E1E1E1E1E1E /* pfsPalettes */ = {
+			isa = PBXGroup;
+			children = (
+				A1A1A1A1A1A1A1A1A1A1A1A2 /* PaletteFloaterApp.swift */,
+				A1A1A1A1A1A1A1A1A1A1A1A1 /* AppDelegate.swift */,
+				A1A1A1A1A1A1A1A1A1A1A1A3 /* ContentView.swift */,
+				A1A1A1A1A1A1A1A1A1A1A1A4 /* PaletteCommands.swift */,
+				1F1F1F1F1F1F1F1F1F1F1F1F /* Models */,
+				2A2A2A2A2A2A2A2A2A2A2A2A /* Store */,
+				2B2B2B2B2B2B2B2B2B2B2B2B /* Utilities */,
+				2C2C2C2C2C2C2C2C2C2C2C2C /* Views */,
+				A1A1A1A1A1A1A1A1A1A1A1B6 /* Assets.xcassets */,
+				A1A1A1A1A1A1A1A1A1A1A1B7 /* Info.plist */,
+			);
+			path = pfsPalettes;
+			sourceTree = "<group>";
+		};
+		1F1F1F1F1F1F1F1F1F1F1F1F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A1A1A1A1A1A1A1A1A1A1A1A5 /* Palette.swift */,
+				A1A1A1A1A1A1A1A1A1A1A1A6 /* PaletteColor.swift */,
+				A1A1A1A1A1A1A1A1A1A1A1A7 /* PalettesPayload.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		2A2A2A2A2A2A2A2A2A2A2A2A /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				A1A1A1A1A1A1A1A1A1A1A1A8 /* PaletteStore.swift */,
+				A1A1A1A1A1A1A1A1A1A1A1A9 /* PalettesDocument.swift */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
+		2B2B2B2B2B2B2B2B2B2B2B2B /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				A1A1A1A1A1A1A1A1A1A1A1AA /* ColorUtils.swift */,
+				A1A1A1A1A1A1A1A1A1A1A1AB /* WindowAccessor.swift */,
+				A1A1A1A1A1A1A1A1A1A1A1AC /* VisualEffectView.swift */,
+				A1A1A1A1A1A1A1A1A1A1A1AD /* WindowManager.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		2C2C2C2C2C2C2C2C2C2C2C2C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A1A1A1A1A1A1A1A1A1A1A1AE /* PaletteBackgroundView.swift */,
+				A1A1A1A1A1A1A1A1A1A1A1AF /* HeaderView.swift */,
+				A1A1A1A1A1A1A1A1A1A1A1B0 /* PaletteRowView.swift */,
+				A1A1A1A1A1A1A1A1A1A1A1B1 /* SwatchView.swift */,
+				A1A1A1A1A1A1A1A1A1A1A1B2 /* EmptyStateView.swift */,
+				A1A1A1A1A1A1A1A1A1A1A1B3 /* AddColorView.swift */,
+				A1A1A1A1A1A1A1A1A1A1A1B4 /* EditColorSheet.swift */,
+				A1A1A1A1A1A1A1A1A1A1A1B5 /* NewPaletteSheet.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		2D2D2D2D2D2D2D2D2D2D2D2D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2E2E2E2E2E2E2E2E2E2E2E2E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A1A1A1A1A1A1A1A1A1A1A1B8 /* pfsPalettes.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1B1B1B1B1B1B1B1B1B1B1B1B /* pfsPalettes */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3A3A3A3A3A3A3A3A3A3A3A3A /* Build configuration list for PBXNativeTarget "pfsPalettes" */;
+			buildPhases = (
+				C2C2C2C2C2C2C2C2C2C2C2C2 /* Sources */,
+				C1C1C1C1C1C1C1C1C1C1C1C1 /* Frameworks */,
+				C3C3C3C3C3C3C3C3C3C3C3C3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = pfsPalettes;
+			productName = pfsPalettes;
+			productReference = A1A1A1A1A1A1A1A1A1A1A1B8 /* pfsPalettes.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1A1A1A1A1A1A1A1A1A1A1A1A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					1B1B1B1B1B1B1B1B1B1B1B1B = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = 3B3B3B3B3B3B3B3B3B3B3B3B /* Build configuration list for PBXProject "pfsPalettes" */;
+			compatibilityVersion = "Xcode 15.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1D1D1D1D1D1D1D1D1D1D1D1D;
+			productRefGroup = 2E2E2E2E2E2E2E2E2E2E2E2E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1B1B1B1B1B1B1B1B1B1B1B1B /* pfsPalettes */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C3C3C3C3C3C3C3C3C3C3C3C3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1B1B1B1B1B1B1B1B1B1B116 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C2C2C2C2C2C2C2C2C2C2C2C2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1B1B1B1B1B1B1B1B1B1B102 /* PaletteFloaterApp.swift in Sources */,
+				B1B1B1B1B1B1B1B1B1B1B101 /* AppDelegate.swift in Sources */,
+				B1B1B1B1B1B1B1B1B1B1B103 /* ContentView.swift in Sources */,
+				B1B1B1B1B1B1B1B1B1B1B104 /* PaletteCommands.swift in Sources */,
+				B1B1B1B1B1B1B1B1B1B1B105 /* Palette.swift in Sources */,
+				B1B1B1B1B1B1B1B1B1B1B106 /* PaletteColor.swift in Sources */,
+				B1B1B1B1B1B1B1B1B1B1B107 /* PalettesPayload.swift in Sources */,
+				B1B1B1B1B1B1B1B1B1B1B108 /* PaletteStore.swift in Sources */,
+				B1B1B1B1B1B1B1B1B1B1B109 /* PalettesDocument.swift in Sources */,
+				B1B1B1B1B1B1B1B1B1B1B10A /* ColorUtils.swift in Sources */,
+				B1B1B1B1B1B1B1B1B1B1B10B /* WindowAccessor.swift in Sources */,
+				B1B1B1B1B1B1B1B1B1B1B10C /* VisualEffectView.swift in Sources */,
+				B1B1B1B1B1B1B1B1B1B1B10D /* WindowManager.swift in Sources */,
+				B1B1B1B1B1B1B1B1B1B1B10E /* PaletteBackgroundView.swift in Sources */,
+				B1B1B1B1B1B1B1B1B1B1B10F /* HeaderView.swift in Sources */,
+				B1B1B1B1B1B1B1B1B1B1B110 /* PaletteRowView.swift in Sources */,
+				B1B1B1B1B1B1B1B1B1B1B111 /* SwatchView.swift in Sources */,
+				B1B1B1B1B1B1B1B1B1B1B112 /* EmptyStateView.swift in Sources */,
+				B1B1B1B1B1B1B1B1B1B1B113 /* AddColorView.swift in Sources */,
+				B1B1B1B1B1B1B1B1B1B1B114 /* EditColorSheet.swift in Sources */,
+				B1B1B1B1B1B1B1B1B1B1B115 /* NewPaletteSheet.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		3C3C3C3C3C3C3C3C3C3C3C3C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		3D3D3D3D3D3D3D3D3D3D3D3D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = -O;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		3E3E3E3E3E3E3E3E3E3E3E3E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = pfsPalettes/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pfs.pfsPalettes;
+				PRODUCT_NAME = pfsPalettes;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		3F3F3F3F3F3F3F3F3F3F3F3F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = pfsPalettes/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pfs.pfsPalettes;
+				PRODUCT_NAME = pfsPalettes;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3A3A3A3A3A3A3A3A3A3A3A3A /* Build configuration list for PBXNativeTarget "pfsPalettes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3E3E3E3E3E3E3E3E3E3E3E3E /* Debug */,
+				3F3F3F3F3F3F3F3F3F3F3F3F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3B3B3B3B3B3B3B3B3B3B3B3B /* Build configuration list for PBXProject "pfsPalettes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3C3C3C3C3C3C3C3C3C3C3C3C /* Debug */,
+				3D3D3D3D3D3D3D3D3D3D3D3D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1A1A1A1A1A1A1A1A1A1A1A1A /* Project object */;
+}
