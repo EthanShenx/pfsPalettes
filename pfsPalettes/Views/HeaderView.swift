@@ -72,6 +72,12 @@ struct HeaderView: View {
 
                 Divider()
 
+                Button("Restore Built-in Palettes") {
+                    store.restoreBuiltInPalettes()
+                }
+
+                Divider()
+
                 Button("Sample Colors...") {
                     showingSamplePopover = true
                 }

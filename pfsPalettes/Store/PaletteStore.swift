@@ -71,7 +71,8 @@ final class PaletteStore: ObservableObject {
            !saved.isEmpty {
             initialPalettes = saved
         } else {
-            initialPalettes = [Palette.starter]
+            // First launch: include all built-in palettes
+            initialPalettes = [Palette.starter] + Palette.builtInPalettes
         }
 
         // Ensure starred colors palette exists
@@ -221,6 +222,23 @@ final class PaletteStore: ObservableObject {
 
     func toggleSortMode() {
         sortMode = sortMode == .brightness ? .hue : .brightness
+    }
+
+    /// Adds any missing built-in palettes to the collection
+    func restoreBuiltInPalettes() {
+        let existingNames = Set(palettes.map { $0.name.lowercased() })
+        var added = 0
+        for builtIn in Palette.builtInPalettes {
+            if !existingNames.contains(builtIn.name.lowercased()) {
+                palettes.append(builtIn)
+                added += 1
+            }
+        }
+        // Also ensure starter palette exists
+        if !existingNames.contains(Palette.starter.name.lowercased()) {
+            palettes.append(Palette.starter)
+            added += 1
+        }
     }
 
     /// Intelligently samples colors from a palette to get a balanced subset.
