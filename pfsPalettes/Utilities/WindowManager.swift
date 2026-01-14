@@ -60,7 +60,7 @@ final class WindowManager: NSObject, ObservableObject, NSWindowDelegate {
         let autosaveKey = "NSWindow Frame \(autosaveName)"
         if UserDefaults.standard.string(forKey: autosaveKey) == nil {
             // Only apply the default size when the window has never been moved.
-            let defaultSize = CGSize(width: 400, height: 90)
+            let defaultSize = CGSize(width: 330, height: 90)
             window.setContentSize(defaultSize)
             if let screen = window.screen ?? NSScreen.main {
                 let origin = CGPoint(

@@ -25,7 +25,9 @@
 | 📋 **One-Click Copy** | Click any swatch to instantly copy its hex code |
 | 🔄 **Smart Sorting** | Sort colors by brightness or group by hue family |
 | 🎯 **Color Sampling** | Intelligently select balanced color subsets from large palettes |
-| 📁 **Multiple Palettes** | Create, rename, and organize unlimited palettes |
+| 🌗 **Tint/Shade Generator** | Create lighter or darker variations of your palette with a slider |
+| ⭐ **Favorites** | Star palettes and individual colors for quick access |
+| 📁 **19 Built-in Palettes** | Nature series, Atlas, and more ready to use |
 | 🔌 **Import/Export** | Support for JSON and macOS `.clr` color list formats |
 | 🎚️ **Adjustable Opacity** | Control window transparency to fit your workflow |
 | ⌨️ **Keyboard Shortcuts** | Quick toggle with `⌘⇧C` |
@@ -90,9 +92,30 @@ Click the sort icon to toggle between:
 ### Sampling Colors
 
 For large palettes, use the sampling feature to extract a balanced subset:
-1. Click the **layers icon** (⧉) in the header
+1. Click the **layers icon** in the header
 2. Use the stepper to select how many colors you want
 3. Preview the selection and click **Create** to make a new palette
+
+### Tint/Shade Generator
+
+Create lighter (tints) or darker (shades) variations of your palette:
+1. Click the **gradient icon** in the header
+2. Drag the slider left for shades, right for tints
+3. Preview the adjusted colors in real-time
+4. Click **Create** to save as a new palette
+
+### Favorite Palettes
+
+- Click the **star icon** next to the palette picker to mark a palette as favorite
+- Favorite palettes appear at the top of the palette list
+- Gold star = favorited, hollow star = not favorited
+
+### Starred Colors
+
+- Hover over any color swatch to reveal a small star icon
+- Click to add the color to your **"Starred Colors"** palette
+- Starred colors sync in real-time across all palettes
+- Access your starred colors from the palette picker (always at the top)
 
 ### Managing Palettes
 
@@ -101,6 +124,22 @@ Click the **⋯** menu button to:
 - Rename or delete palettes
 - Import palettes from JSON or `.clr` files
 - Export palettes for sharing
+- Restore built-in palettes
+
+---
+
+## 🎨 Built-in Palettes
+
+The app includes **19 professionally designed palettes** ready to use:
+
+| Category | Palettes |
+|----------|----------|
+| **Nature Series** | Grey, Stone, Red, Blue, Yellow, Olive, Green, Teal, Purple, Orange, Skin Tones |
+| **Atlas** | Atlas-1 (26 colors), Atlas-2 (15 colors) |
+| **Data Visualization** | RColorBrewer: Paired |
+| **Color Schemes** | 5-Color, 4-Color, 2-Color options |
+
+Use **⋯ → Restore Built-in Palettes** to add any missing built-in palettes.
 
 ---
 
