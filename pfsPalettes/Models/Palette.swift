@@ -14,6 +14,21 @@ struct Palette: Identifiable, Codable, Hashable {
         self.isFavorite = isFavorite
         self.isSystemManaged = isSystemManaged
     }
+
+    // Custom decoder for backwards compatibility with old saved data
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(UUID.self, forKey: .id)
+        name = try container.decode(String.self, forKey: .name)
+        colors = try container.decode([PaletteColor].self, forKey: .colors)
+        // Provide defaults for new properties that may not exist in old data
+        isFavorite = try container.decodeIfPresent(Bool.self, forKey: .isFavorite) ?? false
+        isSystemManaged = try container.decodeIfPresent(Bool.self, forKey: .isSystemManaged) ?? false
+    }
+
+    private enum CodingKeys: String, CodingKey {
+        case id, name, colors, isFavorite, isSystemManaged
+    }
 }
 
 extension Palette {
