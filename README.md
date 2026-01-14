@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="pfsPalettes/Assets.xcassets/AppIcon.appiconset/AppIcon-256.png" alt="pfsPalettes App Icon" width="128" height="128">
+  <img src="pfsPalettes/Assets.xcassets/AppIcon.appiconset/AppIcon-256.png" alt="pfsPalettes App Icon" width="156" height="156">
 </p>
 
 <h1 align="center">pfsPalettes</h1>
