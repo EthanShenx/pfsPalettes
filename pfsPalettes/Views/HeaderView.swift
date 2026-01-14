@@ -11,14 +11,15 @@ struct HeaderView: View {
     @State private var showingExportJSON = false
     @State private var showingOpacityPopover = false
     @State private var showingSamplePopover = false
+    @State private var showingTintShadePopover = false
     @State private var alertMessage: String?
     @State private var showingAlert = false
 
     var body: some View {
         HStack(spacing: 8) {
             Picker(selection: $store.selectedPaletteID) {
-                ForEach(store.palettes) { palette in
-                    PaletteMenuRow(palette: palette)
+                ForEach(store.sortedPalettes) { palette in
+                    PaletteMenuRow(palette: palette, isFavorite: palette.isFavorite)
                         .tag(palette.id)
                 }
             } label: {
@@ -28,6 +29,21 @@ struct HeaderView: View {
             .frame(minWidth: 160)
             .pickerStyle(.menu)
 
+            // Favorite toggle button
+            if let palette = store.selectedPalette, !palette.isSystemManaged {
+                Button {
+                    withAnimation(.spring(response: 0.25, dampingFraction: 0.7)) {
+                        store.toggleFavorite(for: palette.id)
+                    }
+                } label: {
+                    Image(systemName: palette.isFavorite ? "star.fill" : "star")
+                        .font(.system(size: 10))
+                        .foregroundColor(palette.isFavorite ? .yellow : .secondary)
+                }
+                .buttonStyle(.borderless)
+                .help(palette.isFavorite ? "Remove from Favorites" : "Add to Favorites")
+            }
+
             Menu {
                 Button("New Palette...") {
                     showingNewPalette = true
@@ -35,11 +51,11 @@ struct HeaderView: View {
                 Button("Rename Palette...") {
                     showingRenamePalette = true
                 }
-                .disabled(store.selectedPalette == nil)
+                .disabled(store.selectedPalette == nil || store.selectedPalette?.isSystemManaged == true)
                 Button("Delete Palette") {
                     store.deleteSelectedPalette()
                 }
-                .disabled(store.palettes.count < 2)
+                .disabled(store.palettes.count < 2 || store.selectedPalette?.isSystemManaged == true)
 
                 Divider()
 
@@ -66,6 +82,24 @@ struct HeaderView: View {
             .menuStyle(.borderlessButton)
 
             Spacer(minLength: 0)
+
+            // Tint/Shade button
+            if (store.selectedPalette?.colors.count ?? 0) >= 1 && store.selectedPalette?.isSystemManaged != true {
+                Button {
+                    showingTintShadePopover.toggle()
+                } label: {
+                    Image(systemName: "circle.lefthalf.striped.horizontal")
+                        .font(.system(size: 10))
+                }
+                .buttonStyle(.borderless)
+                .popover(isPresented: $showingTintShadePopover) {
+                    TintShadePopover()
+                        .environmentObject(store)
+                        .padding(10)
+                        .frame(width: 200)
+                }
+                .help("Generate tint/shade variations")
+            }
 
             // Sample colors button
             if (store.selectedPalette?.colors.count ?? 0) >= 3 {
@@ -187,11 +221,23 @@ private struct PalettePickerLabel: View {
 
 private struct PaletteMenuRow: View {
     let palette: Palette
+    let isFavorite: Bool
 
     var body: some View {
         HStack(spacing: 6) {
-            PaletteSwatch(color: middleColor(for: palette))
+            if palette.isSystemManaged {
+                Image(systemName: "star.fill")
+                    .font(.system(size: 9))
+                    .foregroundColor(.yellow)
+            } else {
+                PaletteSwatch(color: middleColor(for: palette))
+            }
             Text(palette.name)
+            if isFavorite && !palette.isSystemManaged {
+                Image(systemName: "star.fill")
+                    .font(.system(size: 8))
+                    .foregroundColor(.yellow)
+            }
         }
     }
 
@@ -273,6 +319,91 @@ private struct SampleColorsPopover: View {
             }
             .buttonStyle(.borderedProminent)
             .controlSize(.small)
+        }
+    }
+}
+
+private struct TintShadePopover: View {
+    @EnvironmentObject var store: PaletteStore
+    @Environment(\.dismiss) private var dismiss
+    @State private var tintShadeValue: Double = 0
+
+    private var percentageText: String {
+        let pct = Int(tintShadeValue * 100)
+        if pct > 0 {
+            return "+\(pct)% Tint"
+        } else if pct < 0 {
+            return "\(pct)% Shade"
+        }
+        return "Base"
+    }
+
+    private var previewColors: [NSColor] {
+        guard let palette = store.selectedPalette else { return [] }
+        return palette.colors.prefix(5).compactMap { color -> NSColor? in
+            guard let nsColor = color.nsColor else { return nil }
+            if tintShadeValue >= 0 {
+                return ColorUtils.tint(nsColor, percentage: tintShadeValue)
+            } else {
+                return ColorUtils.shade(nsColor, percentage: -tintShadeValue)
+            }
+        }
+    }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            // Slider with gradient background
+            VStack(spacing: 4) {
+                HStack {
+                    Text("Shade")
+                        .font(.system(size: 9))
+                        .foregroundColor(.secondary)
+                    Spacer()
+                    Text(percentageText)
+                        .font(.system(size: 10, weight: .medium).monospacedDigit())
+                    Spacer()
+                    Text("Tint")
+                        .font(.system(size: 9))
+                        .foregroundColor(.secondary)
+                }
+
+                Slider(value: $tintShadeValue, in: -1.0...1.0)
+            }
+
+            // Preview colors
+            HStack(spacing: 4) {
+                ForEach(Array(previewColors.enumerated()), id: \.offset) { _, nsColor in
+                    RoundedRectangle(cornerRadius: 3, style: .continuous)
+                        .fill(Color(nsColor: nsColor))
+                        .frame(width: 28, height: 28)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 3, style: .continuous)
+                                .stroke(Color.primary.opacity(0.15), lineWidth: 0.5)
+                        )
+                }
+            }
+            .frame(height: 30)
+
+            HStack {
+                Button("Reset") {
+                    tintShadeValue = 0
+                }
+                .buttonStyle(.bordered)
+                .controlSize(.small)
+
+                Spacer()
+
+                Button {
+                    store.createTintShadePalette(value: tintShadeValue)
+                    dismiss()
+                } label: {
+                    Label("Create", systemImage: "plus.circle.fill")
+                        .font(.caption)
+                }
+                .buttonStyle(.borderedProminent)
+                .controlSize(.small)
+                .disabled(tintShadeValue == 0)
+            }
         }
     }
 }

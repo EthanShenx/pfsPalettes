@@ -69,6 +69,51 @@ enum ColorUtils {
         rgb.getHue(&h, saturation: &s, brightness: &b, alpha: &a)
         return (hue: Double(h) * 360, saturation: Double(s), brightness: Double(b))
     }
+
+    /// Creates a tint (lighter) version of a color by mixing with white.
+    /// - Parameter percentage: 0.0 to 1.0, where 1.0 is pure white
+    static func tint(_ color: NSColor, percentage: Double) -> NSColor {
+        guard let rgb = color.usingColorSpace(.sRGB) else { return color }
+        let factor = CGFloat(max(0, min(1, percentage)))
+        let r = rgb.redComponent + (1 - rgb.redComponent) * factor
+        let g = rgb.greenComponent + (1 - rgb.greenComponent) * factor
+        let b = rgb.blueComponent + (1 - rgb.blueComponent) * factor
+        return NSColor(srgbRed: r, green: g, blue: b, alpha: 1.0)
+    }
+
+    /// Creates a shade (darker) version of a color by mixing with black.
+    /// - Parameter percentage: 0.0 to 1.0, where 1.0 is pure black
+    static func shade(_ color: NSColor, percentage: Double) -> NSColor {
+        guard let rgb = color.usingColorSpace(.sRGB) else { return color }
+        let factor = CGFloat(max(0, min(1, 1 - percentage)))
+        let r = rgb.redComponent * factor
+        let g = rgb.greenComponent * factor
+        let b = rgb.blueComponent * factor
+        return NSColor(srgbRed: r, green: g, blue: b, alpha: 1.0)
+    }
+
+    /// Generates an array of tints and shades for a color.
+    /// - Parameters:
+    ///   - color: Base color
+    ///   - tintShadeValue: -1.0 (full shade) to +1.0 (full tint), 0 is base
+    ///   - steps: Number of color variations to generate
+    static func generateTintShadeScale(from color: NSColor, value: Double, steps: Int = 9) -> [NSColor] {
+        var colors: [NSColor] = []
+        let stepSize = 2.0 / Double(steps - 1)  // From -1 to +1
+
+        for i in 0..<steps {
+            let position = -1.0 + (Double(i) * stepSize)
+            let adjustedPosition = position + value
+            let clampedPosition = max(-1.0, min(1.0, adjustedPosition))
+
+            if clampedPosition >= 0 {
+                colors.append(tint(color, percentage: clampedPosition))
+            } else {
+                colors.append(shade(color, percentage: -clampedPosition))
+            }
+        }
+        return colors
+    }
 }
 
 extension CharacterSet {

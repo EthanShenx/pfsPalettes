@@ -4,11 +4,15 @@ struct Palette: Identifiable, Codable, Hashable {
     var id: UUID
     var name: String
     var colors: [PaletteColor]
+    var isFavorite: Bool
+    var isSystemManaged: Bool  // For auto-generated palettes like "Starred Colors"
 
-    init(id: UUID = UUID(), name: String, colors: [PaletteColor]) {
+    init(id: UUID = UUID(), name: String, colors: [PaletteColor], isFavorite: Bool = false, isSystemManaged: Bool = false) {
         self.id = id
         self.name = name
         self.colors = colors
+        self.isFavorite = isFavorite
+        self.isSystemManaged = isSystemManaged
     }
 }
 

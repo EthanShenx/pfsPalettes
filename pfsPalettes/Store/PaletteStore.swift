@@ -45,11 +45,27 @@ final class PaletteStore: ObservableObject {
         set { sortModeRaw = newValue.rawValue }
     }
 
+    /// Set of starred color hex values (normalized, uppercase)
+    @Published var starredColorHexes: Set<String> {
+        didSet { persistStarredColors() }
+    }
+
     private let palettesKey = "pfsPalettes.palettes"
     private let selectedPaletteKey = "pfsPalettes.selectedPaletteID"
+    private let starredColorsKey = "pfsPalettes.starredColors"
+
+    /// ID for the auto-managed "Starred Colors" palette
+    static let starredPaletteID = UUID(uuidString: "00000000-0000-0000-0000-000000000001")!
 
     init() {
-        let initialPalettes: [Palette]
+        // Load starred colors first
+        if let starredArray = UserDefaults.standard.array(forKey: starredColorsKey) as? [String] {
+            starredColorHexes = Set(starredArray)
+        } else {
+            starredColorHexes = []
+        }
+
+        var initialPalettes: [Palette]
         if let data = UserDefaults.standard.data(forKey: palettesKey),
            let saved = try? JSONDecoder().decode([Palette].self, from: data),
            !saved.isEmpty {
@@ -58,17 +74,33 @@ final class PaletteStore: ObservableObject {
             initialPalettes = [Palette.starter]
         }
 
+        // Ensure starred colors palette exists
+        if !initialPalettes.contains(where: { $0.id == PaletteStore.starredPaletteID }) {
+            let starredPalette = Palette(
+                id: PaletteStore.starredPaletteID,
+                name: "Starred Colors",
+                colors: [],
+                isFavorite: false,
+                isSystemManaged: true
+            )
+            initialPalettes.insert(starredPalette, at: 0)
+        }
+
         let initialSelectedID: UUID
         if let storedID = UserDefaults.standard.string(forKey: selectedPaletteKey),
            let uuid = UUID(uuidString: storedID),
            initialPalettes.contains(where: { $0.id == uuid }) {
             initialSelectedID = uuid
         } else {
-            initialSelectedID = initialPalettes.first?.id ?? UUID()
+            // Select first non-system palette by default
+            initialSelectedID = initialPalettes.first(where: { !$0.isSystemManaged })?.id ?? initialPalettes.first?.id ?? UUID()
         }
 
         palettes = initialPalettes
         selectedPaletteID = initialSelectedID
+
+        // Sync starred colors palette
+        syncStarredColorsPalette()
     }
 
     var selectedPalette: Palette? {
@@ -77,6 +109,85 @@ final class PaletteStore: ObservableObject {
 
     func focusAddField() {
         wantsAddFieldFocus = true
+    }
+
+    // MARK: - Sorted Palettes (Starred first, then Favorites, then rest)
+
+    var sortedPalettes: [Palette] {
+        palettes.sorted { p1, p2 in
+            // Starred Colors palette always first
+            if p1.id == PaletteStore.starredPaletteID { return true }
+            if p2.id == PaletteStore.starredPaletteID { return false }
+            // Then favorites
+            if p1.isFavorite != p2.isFavorite { return p1.isFavorite }
+            // Then by name
+            return p1.name.localizedCaseInsensitiveCompare(p2.name) == .orderedAscending
+        }
+    }
+
+    // MARK: - Favorite Palettes
+
+    func toggleFavorite(for paletteID: UUID) {
+        guard let index = palettes.firstIndex(where: { $0.id == paletteID }),
+              !palettes[index].isSystemManaged else { return }
+        palettes[index].isFavorite.toggle()
+    }
+
+    func isFavorite(paletteID: UUID) -> Bool {
+        palettes.first(where: { $0.id == paletteID })?.isFavorite ?? false
+    }
+
+    // MARK: - Starred Colors
+
+    func isColorStarred(_ hex: String) -> Bool {
+        guard let normalized = ColorUtils.normalizeHex(hex) else { return false }
+        return starredColorHexes.contains(normalized)
+    }
+
+    func toggleStarColor(_ hex: String, name: String? = nil) {
+        guard let normalized = ColorUtils.normalizeHex(hex) else { return }
+        if starredColorHexes.contains(normalized) {
+            starredColorHexes.remove(normalized)
+        } else {
+            starredColorHexes.insert(normalized)
+        }
+        syncStarredColorsPalette()
+    }
+
+    private func syncStarredColorsPalette() {
+        guard let index = palettes.firstIndex(where: { $0.id == PaletteStore.starredPaletteID }) else { return }
+        let colors = starredColorHexes.map { PaletteColor(hex: $0) }
+        palettes[index].colors = colors
+    }
+
+    private func persistStarredColors() {
+        UserDefaults.standard.set(Array(starredColorHexes), forKey: starredColorsKey)
+    }
+
+    // MARK: - Tint/Shade Generator
+
+    /// Generates a tint/shade palette from the current palette's colors.
+    /// - Parameter value: -1.0 (full shade) to +1.0 (full tint)
+    func createTintShadePalette(value: Double) {
+        guard let palette = selectedPalette, !palette.colors.isEmpty else { return }
+
+        var newColors: [PaletteColor] = []
+        for color in palette.colors {
+            guard let nsColor = color.nsColor else { continue }
+            let adjustedColor: NSColor
+            if value >= 0 {
+                adjustedColor = ColorUtils.tint(nsColor, percentage: value)
+            } else {
+                adjustedColor = ColorUtils.shade(nsColor, percentage: -value)
+            }
+            let hex = ColorUtils.hexString(from: adjustedColor)
+            let baseName = color.name ?? color.normalizedHex
+            let suffix = value >= 0 ? "+\(Int(value * 100))%" : "\(Int(value * 100))%"
+            newColors.append(PaletteColor(hex: hex, name: "\(baseName) \(suffix)"))
+        }
+
+        let suffix = value >= 0 ? "Tint +\(Int(value * 100))%" : "Shade \(Int(value * 100))%"
+        addPalette(name: "\(palette.name) (\(suffix))", colors: newColors)
     }
 
     func sortedColors(_ colors: [PaletteColor]) -> [PaletteColor] {
